@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import GIT_LOGO from '../images/git.png'
 import { IoIosArrowForward } from "react-icons/io";
 import { FaRegFolder } from "react-icons/fa6";
@@ -8,6 +8,9 @@ const IDE = () => {
 
     const [projectExpanded, setprojectExpanded] = React.useState(false);
     const [selectedSection, setSelectedSection] = React.useState("Curriculum Vitae")
+    const [initialContent] = React.useState(`visitor@Prakhars-Portfolio  ${selectedSection}  %  `);
+    const [command, setCommand] = React.useState(initialContent)
+    const textareaRef = useRef(null)
 
     const toggleProjectExpanded = () => {
             setprojectExpanded(!projectExpanded)
@@ -16,6 +19,25 @@ const IDE = () => {
     const updateSelectedSection = (section) => {
         setSelectedSection(section)
     }
+
+    const updateCommand = (event) => {
+        setCommand(event.target.value)
+    }
+
+    const handleInput = (event) => {
+
+        const txtarea = textareaRef.current;
+        txtarea.style.height = 'auto'
+        txtarea.style.height = `${txtarea.scrollHeight}px`
+
+        const { value } = event.target;
+        const startsWithInitialContent = value.startsWith(initialContent);
+        if (!startsWithInitialContent) {
+            setCommand(initialContent + value.slice(initialContent.length));
+        } else {
+            setCommand(value);
+        }
+    };
 
     return (
         <div id='content'>
@@ -59,10 +81,15 @@ const IDE = () => {
                 </div>
 
                 <div className='terminal'>
-                    <p>visitor@Prakhars-Portfolio</p>
-                    <p>{selectedSection}</p>
-                    <p>%</p>
-                    <input name='command' />
+                    <textarea 
+                    spellCheck={false}
+                    ref={textareaRef}
+                    rows={1} 
+                    value={command}
+                    onChange={handleInput} 
+                    name='command' 
+                    id='command'
+                />
                 </div>
             </footer>
         </div>

@@ -236,19 +236,26 @@ footer {
     padding: 0.2rem 0.8rem;
     color: whitesmoke;
     font-size: 1.1rem;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: max-content 1fr;
     gap: 0.5rem;
-    align-items: center;
 }
 
-input {
-    flex: 1;
+textarea {
+    background-color: #28282B;
+    border: none;
+    outline: none;
+    grid-column: span 2;
+    width: 100%;
+    color: whitesmoke;
+    height: auto;
+    resize: none;
+    overflow-y: hidden;
+
+    /* flex: 1;
     padding: 0;
     background-color: #28282B;
     border: none;
     outline: none;
-    align-self: flex-start;
-    color: whitesmoke;
-    min-width: 0;
+    color: whitesmoke; */
 }
