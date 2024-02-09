@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.87e13583.css",
-    "main.js": "/portfolio/static/js/main.6636dde1.js",
-    "static/media/CV_PrakharRathi.pdf": "/portfolio/static/media/CV_PrakharRathi.a7ef341965c8ce0a96ff.pdf",
+    "main.js": "/portfolio/static/js/main.e571a977.js",
+    "static/media/CV_PrakharRathi.pdf": "/portfolio/static/media/CV_PrakharRathi.72ff846bcea56abdc274.pdf",
     "index.html": "/portfolio/index.html",
     "main.87e13583.css.map": "/portfolio/static/css/main.87e13583.css.map",
-    "main.6636dde1.js.map": "/portfolio/static/js/main.6636dde1.js.map"
+    "main.e571a977.js.map": "/portfolio/static/js/main.e571a977.js.map"
   },
   "entrypoints": [
     "static/css/main.87e13583.css",
-    "static/js/main.6636dde1.js"
+    "static/js/main.e571a977.js"
   ]
 }
