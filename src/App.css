@@ -8,6 +8,9 @@
     box-sizing: border-box;
 }
 
+:root {
+    --max-height: calc(100vh - 370px)
+}
 
 /* SECTION STYLES */
 /* section {
@@ -160,7 +163,7 @@ body, .root, .App {
 #content {
     height: 100vh;
     display: grid;
-    grid-template-rows: 1fr 7fr 4fr;
+    grid-template-rows: 60px auto 45px 250px;
 }
 
 /* NAV */
@@ -196,10 +199,13 @@ body, .root, .App {
     padding: 0rem 0.8rem;
     border-top: black solid 0.05rem;
     border-bottom: black solid 0.05rem;
+
+    display: grid;
 }
 
 .sidebar {
     background-color: #343434;
+    user-select: none;
 }
 
 .project-name {
@@ -207,15 +213,58 @@ body, .root, .App {
     gap: 0.4rem;
     align-items: center;
     font-weight: bold;
+    margin-top: 0.2rem;
 }
 
-.section-name:hover {
+.project-name:hover {
     background-color: #28282B;
+}
+
+.project-name-dets {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.one-level-section {
+    padding-left: 2.6rem;
+}
+
+.one-level-section-expanded {
+    padding-left: 1.2rem;
+}
+
+.two-level-section {
+    padding-left: 3.7rem;
+}
+
+.bullet-heading {
+    color: #00BFFF;
+}
+
+.ide-btn {
+    padding: 0.2rem 0.5rem;
+    font-weight: bold;
+}
+
+.scrollable-column {
+    max-height: var(--max-height);
+    overflow-y: auto;
+}
+
+.role-details {
+    padding: 0.5rem 0.5rem;
+    font-size: 1.2rem;
+}
+
+.role-details p {
+    text-align: justify;
 }
 
 footer {
     background-color: #28282B;
     max-width: 100vw;
+    max-height: 100%;
 }
 
 .footer-nav {
@@ -223,7 +272,7 @@ footer {
     color: whitesmoke;
     display: flex;
     gap: 1rem;
-    align-items: flex-start;
+    align-items: center;
     padding: 0.2rem 0 0 0.8rem;
 }
 
@@ -236,26 +285,36 @@ footer {
     padding: 0.2rem 0.8rem;
     color: whitesmoke;
     font-size: 1.1rem;
-    display: grid;
-    grid-template-columns: max-content 1fr;
     gap: 0.5rem;
 }
 
 textarea {
+    max-height: 230px;
     background-color: #28282B;
     border: none;
     outline: none;
-    grid-column: span 2;
     width: 100%;
     color: whitesmoke;
     height: auto;
     resize: none;
-    overflow-y: hidden;
+    scrollbar-color: #28282B;
+}
 
-    /* flex: 1;
-    padding: 0;
-    background-color: #28282B;
-    border: none;
-    outline: none;
-    color: whitesmoke; */
+.database {
+    border-bottom: black solid 0.05rem;
+    margin: 0;
+}
+
+.database-tech-stack p {
+    margin: 0;
+}
+
+.tech-stack {
+    padding-left: 1.2rem;
+}
+
+.project-title {
+    color: #f7d560;
+    text-decoration: underline;
+    text-underline-offset: 0.25em!important;
 }
