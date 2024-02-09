@@ -9,7 +9,7 @@
 }
 
 :root {
-    --max-height: calc(100vh - 370px)
+    --max-height: calc(100vh - 340px)
 }
 
 /* SECTION STYLES */
@@ -163,15 +163,26 @@ body, .root, .App {
 #content {
     height: 100vh;
     display: grid;
-    grid-template-rows: 60px auto 45px 250px;
+    grid-template-rows: 60px auto 45px 220px;
 }
 
 /* NAV */
 .nav {
     background-color: #343434;
     color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0.8rem 0 1rem ;
+}
+
+.nav-left {
+    display: flex;
     gap: 1rem;
-    padding: 0.8rem 0 0 1rem ;
+}
+
+.nav .btn {
+    padding: 0.2rem 0.5rem;
+    align-self: flex-start;
 }
 
 .nav-item {
@@ -289,7 +300,7 @@ footer {
 }
 
 textarea {
-    max-height: 230px;
+    max-height: 200px;
     background-color: #28282B;
     border: none;
     outline: none;
@@ -298,6 +309,7 @@ textarea {
     height: auto;
     resize: none;
     scrollbar-color: #28282B;
+    overflow-y: hidden;
 }
 
 .database {

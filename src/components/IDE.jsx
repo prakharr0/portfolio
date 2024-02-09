@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import GIT_LOGO from '../images/git.png'
+import MyCV from '../files/CV_PrakharRathi.pdf'
 import { IoIosArrowForward } from "react-icons/io";
 import { FaRegFolder } from "react-icons/fa6";
 import { IoIosArrowDown } from 'react-icons/io';
@@ -10,7 +11,7 @@ import { IoCalendarClearOutline } from "react-icons/io5";
 import { PiDatabase } from "react-icons/pi";
 import { VscJson } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa";
-import { SiApachegroovy, SiReact } from "react-icons/si";
+import { SiApachegroovy, SiPythonanywhere, SiReact } from "react-icons/si";
 import { DiDocker } from "react-icons/di";
 import { SiApache } from "react-icons/si";
 import { PiQueueLight } from "react-icons/pi";
@@ -31,7 +32,7 @@ import { DiMysql } from "react-icons/di";
 import { SiThymeleaf } from "react-icons/si";
 import { LiaHtml5 } from "react-icons/lia";
 import { PiTerminalLight } from "react-icons/pi";
-import { TbBrandPython } from "react-icons/tb";
+import { TbBrandMongodb, TbBrandPython } from "react-icons/tb";
 import { TbBrandJavascript } from "react-icons/tb";
 import { AiOutlineAndroid } from "react-icons/ai";
 import { LiaUniversitySolid } from "react-icons/lia";
@@ -44,7 +45,6 @@ import { TbLego } from "react-icons/tb";
 
 
 const IDE = () => {
-
     const [parentExpanded, setParentExpanded] = React.useState(true)
     const [databaseExpanded, setDatabaseExpanded] = React.useState(true)
     const [experienceExpanded, setExperienceExpanded] = React.useState(false)
@@ -88,6 +88,11 @@ const IDE = () => {
             setParentExpanded(true)
             setEducationExpanded(true)
         }
+
+        if (section == 'VARobot' || section === 'Sentiment Analysis' || section === 'Student Service') {
+            setParentExpanded(true)
+            setProjectExpanded(true)
+        }
     }
 
     const updateCommand = (event) => {
@@ -119,15 +124,24 @@ const IDE = () => {
     return (
         <div id='content'>
             <nav className='nav'>
-                <div className='nav-item'>
-                    <p id='nav-name-logo'>PR</p>
-                    <p>Prakhar Rathi</p>
+                <div className='nav-left'>
+                    <div className='nav-item'>
+                        <p id='nav-name-logo'>PR</p>
+                        <p>Prakhar Rathi</p>
+                    </div>
+
+                    <div className='nav-item'>
+                        <img src={GIT_LOGO} alt='Version Control Icon' width={20} height={20}></img>
+                        <p>dev</p>
+                    </div>
                 </div>
 
-                <div className='nav-item'>
-                    <img src={GIT_LOGO} alt='Version Control Icon' width={20} height={20}></img>
-                    <p>dev</p>
-                </div>
+                <a href={MyCV} download={'CV_PrakharRathi.pdf'} target='_blank'>
+                    <button type='button' className='btn btn-warning fw-bold'>
+                        Download CV
+                    </button>
+                </a>
+
             </nav>
 
             <section className='editor'>
@@ -138,6 +152,8 @@ const IDE = () => {
                             <FaRegFolder />
                             <span>Curriculum Vitae</span>
                         </div>
+
+                        <div className="scrollable-column">
 
                         {
                             (parentExpanded)
@@ -259,6 +275,16 @@ const IDE = () => {
                             </div>
                             : <div></div>
                         }
+
+                        {
+                            (parentExpanded)
+                            ? <div className='project-name one-level-section' onDoubleClick={()=>updateSelectedSection('Languages')}>
+                                <LuText/>
+                                <span>Languages</span>
+                            </div>                            
+                            : <div></div>
+                        }
+                        </div>
                     <div>
 
                 </div>
@@ -496,9 +522,9 @@ const IDE = () => {
                         ? <div className='scrollable-column'>
                             <h3>Projects</h3>  
                             <div className="role-details">
-                                    <p><GoDotFill/><span className='bullet-heading'> VARobot: </span> Virtual and Augmented Reality Assisted Robot Programming . <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('Software Engineer')}>Read more</button></p>
-                                    <p><GoDotFill/><span className='bullet-heading'> Student Service: </span> Full-Stack Web Application. <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('Research Assistant')}>Read more</button></p>
-                                    <p><GoDotFill/><span className='bullet-heading'> Sentiment Analysis </span> of Scraped Consumer Reviews. <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('Project Engineer')}>Read more</button></p>                      
+                                    <p><GoDotFill/><span className='bullet-heading'> VARobot: </span> Virtual and Augmented Reality Assisted Robot Programming . <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('VARobot')}>Read more</button></p>
+                                    <p><GoDotFill/><span className='bullet-heading'> Student Service: </span> Full-Stack Web Application. <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('Student Service')}>Read more</button></p>
+                                    <p><GoDotFill/><span className='bullet-heading'> Sentiment Analysis </span> of Scraped Consumer Reviews. <button type='button' className='btn btn-secondary ide-btn' onClick={()=>updateSelectedSection('Sentiment Analysis')}>Read more</button></p>                      
                             </div>
                         </div> 
                         : <div></div>}
@@ -539,9 +565,45 @@ const IDE = () => {
                                 </p>
                                 <p><GoDotFill/> Programmed a full-stack web application to store and retrieve students' data in a MySQL database.</p>
                                 <p><GoDotFill/> Built a responsive UI and the RESTful API and set up communication between the components.</p>
+                                <p><GoDotFill/> Enabled CRUD operations on the databse via REST API over http.</p>
                             </div>
                         </div> 
                         : <div></div>}
+
+                        {/* Sentiment Analysis */}
+                        {(selectedSection === 'Sentiment Analysis') 
+                        ? <div className='scrollable-column'>
+                            <h3>Sentiment Analysis of Scraped Consumer Reviews</h3>  
+                            <div className="role-details">
+                                <p>
+                                    <LiaUniversitySolid/> &nbsp;
+                                    <a className='link-offset-2' href='https://jssaten.ac.in' target='_blank'>Dr. A.P.J Abdul Kalam Technical University, India</a>
+                                    &nbsp; &nbsp;
+                                    <IoCalendarClearOutline/>&nbsp;
+                                    04/2017 - 03/2018
+                                </p>
+                                
+                                <p><TbUsersGroup/> Bachelor's Group Project</p>
+                                <p><GoDotFill/> Scraped the data related to the searched item from 3 giant e-commerce websites.</p>
+                                <p><GoDotFill/> Programmed sentiment analysis script and arranged reviews into 3 categories.</p>
+                                <p><GoDotFill/> Contributed to the UI and REST API development.</p>
+                                <p><GoDotFill/> Documented and presented the approach and results.</p>
+                            </div>
+                        </div> 
+                        : <div></div>}
+
+                        {/* Languages */}
+                        {(selectedSection === 'Languages') 
+                        ? <div className='scrollable-column'>
+                            <h3>Languages</h3>  
+                            <div className="role-details">
+                                <p><GoDotFill/> <span className='bullet-heading'>English :</span> Business Fluent - C1.</p>
+                                <p><GoDotFill/> <span className='bullet-heading'>German :</span> Intermediate - B1.</p>
+                                <p><GoDotFill/> <span className='bullet-heading'>Hindi :</span> Native.</p>
+                            </div>
+                        </div> 
+                        : <div></div>}
+
                     </div>
 
                     {/* Column 3 */}
@@ -549,7 +611,7 @@ const IDE = () => {
                         <p className='project-name database'><PiDatabase/> Database</p>  
 
                         {/* PERSONAL DETAILS */}
-                        {(selectedSection === 'Curriculum Vitae' || selectedSection == 'Skills' || selectedSection === 'Experience' || selectedSection === 'Education' || selectedSection === 'Projects') 
+                        {(selectedSection === 'Curriculum Vitae' || selectedSection == 'Skills' || selectedSection === 'Experience' || selectedSection === 'Education' || selectedSection === 'Projects' || selectedSection === 'Languages' || selectedSection === 'Contact') 
                         ? <div className='scrollable-column database-tech-stack'>
                             <p className='project-name'>
                                     {databaseExpanded ? <IoIosArrowDown onClick={toggleDatabaseExpanded} /> : <IoIosArrowForward onClick={toggleDatabaseExpanded}/>}
@@ -793,6 +855,30 @@ const IDE = () => {
 
                         </div> 
                         : <div></div>}
+
+                        {/* Sentiment Analysis */}
+                        {(selectedSection === 'Sentiment Analysis') 
+                        ? <div className='scrollable-column database-tech-stack'>
+                            <p className='project-name'>
+                                    {databaseExpanded ? <IoIosArrowDown onClick={toggleDatabaseExpanded} /> : <IoIosArrowForward onClick={toggleDatabaseExpanded}/>}
+                                    <VscJson/>
+                                    <span>techStack@sanalysis</span>
+                            </p>
+                            
+                            { (databaseExpanded)
+                            ? <div className='tech-stack'>
+                                <p><TbBrandPython/> Python</p>
+                                <p><LiaHtml5/> HTML CSS</p>
+                                <p><SiPythonanywhere/> Scrapy</p>
+                                <p><SiPythonanywhere/> Beautiful Soup</p>
+                                <p><TbBrandMongodb/> MongoDB</p>
+                            </div>
+                            : <div></div>
+                            }
+
+                        </div> 
+                        : <div></div>}
+                        
                     </div>
                 </div>
             </section>
