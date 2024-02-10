@@ -623,7 +623,7 @@ const IDE = () => {
                             ? <div className='tech-stack'>
                                 <p><GoPerson/> Prakhar Rathi</p>
                                 <p><CiHome/> Ferdinandstraße 51a, 33102 Paderborn</p>
-                                <p><HiOutlineMail/> prakhrathi@gmail.com</p>
+                                <p><HiOutlineMail/> rathi.prakhar@outlook.com</p>
                                 <p><PiPhoneCallLight/> 0176-56949714</p>
                                 <p><CiLinkedin/> <a className='link-offset-2' href='https://www.linkedin.com/in/rathiprakhar/' target='_blank'>linkedin.com/in/rathiprakhar/</a></p>
                             </div>
